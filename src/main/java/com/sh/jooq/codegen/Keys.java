@@ -45,6 +45,7 @@ public class Keys {
     public static final UniqueKey<TRoleRecord> KEY_T_ROLE_PRIMARY = Internal.createUniqueKey(TRole.T_ROLE, DSL.name("KEY_t_role_PRIMARY"), new TableField[] { TRole.T_ROLE.ID }, true);
     public static final UniqueKey<TRoleMenuRecord> KEY_T_ROLE_MENU_PRIMARY = Internal.createUniqueKey(TRoleMenu.T_ROLE_MENU, DSL.name("KEY_t_role_menu_PRIMARY"), new TableField[] { TRoleMenu.T_ROLE_MENU.ID }, true);
     public static final UniqueKey<TUserRecord> KEY_T_USER_PRIMARY = Internal.createUniqueKey(TUser.T_USER, DSL.name("KEY_t_user_PRIMARY"), new TableField[] { TUser.T_USER.ID }, true);
+    public static final UniqueKey<TUserRecord> KEY_T_USER_T_USER_UN = Internal.createUniqueKey(TUser.T_USER, DSL.name("KEY_t_user_t_user_un"), new TableField[] { TUser.T_USER.USERNAME }, true);
     public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = Internal.createUniqueKey(Users.USERS, DSL.name("KEY_users_PRIMARY"), new TableField[] { Users.USERS.USERNAME }, true);
 
     // -------------------------------------------------------------------------

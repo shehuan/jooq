@@ -8,6 +8,9 @@ import com.sh.jooq.codegen.Keys;
 import com.sh.jooq.codegen.Security;
 import com.sh.jooq.codegen.tables.records.TUserRecord;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Identity;
@@ -53,22 +56,22 @@ public class TUser extends TableImpl<TUserRecord> {
     /**
      * The column <code>security.t_user.account_non_expired</code>.
      */
-    public final TableField<TUserRecord, Boolean> ACCOUNT_NON_EXPIRED = createField(DSL.name("account_non_expired"), SQLDataType.BIT.nullable(false), this, "");
+    public final TableField<TUserRecord, Boolean> ACCOUNT_NON_EXPIRED = createField(DSL.name("account_non_expired"), SQLDataType.BIT.nullable(false).defaultValue(DSL.inline("b'1'", SQLDataType.BIT)), this, "");
 
     /**
      * The column <code>security.t_user.account_non_locked</code>.
      */
-    public final TableField<TUserRecord, Boolean> ACCOUNT_NON_LOCKED = createField(DSL.name("account_non_locked"), SQLDataType.BIT.nullable(false), this, "");
+    public final TableField<TUserRecord, Boolean> ACCOUNT_NON_LOCKED = createField(DSL.name("account_non_locked"), SQLDataType.BIT.nullable(false).defaultValue(DSL.inline("b'1'", SQLDataType.BIT)), this, "");
 
     /**
      * The column <code>security.t_user.credentials_non_expired</code>.
      */
-    public final TableField<TUserRecord, Boolean> CREDENTIALS_NON_EXPIRED = createField(DSL.name("credentials_non_expired"), SQLDataType.BIT.nullable(false), this, "");
+    public final TableField<TUserRecord, Boolean> CREDENTIALS_NON_EXPIRED = createField(DSL.name("credentials_non_expired"), SQLDataType.BIT.nullable(false).defaultValue(DSL.inline("b'1'", SQLDataType.BIT)), this, "");
 
     /**
      * The column <code>security.t_user.enabled</code>.
      */
-    public final TableField<TUserRecord, Boolean> ENABLED = createField(DSL.name("enabled"), SQLDataType.BIT.nullable(false), this, "");
+    public final TableField<TUserRecord, Boolean> ENABLED = createField(DSL.name("enabled"), SQLDataType.BIT.nullable(false).defaultValue(DSL.inline("b'1'", SQLDataType.BIT)), this, "");
 
     /**
      * The column <code>security.t_user.password</code>.
@@ -131,6 +134,11 @@ public class TUser extends TableImpl<TUserRecord> {
     @Override
     public UniqueKey<TUserRecord> getPrimaryKey() {
         return Keys.KEY_T_USER_PRIMARY;
+    }
+
+//    @Override
+    public List<UniqueKey<TUserRecord>> getUniqueKeys() {
+        return Arrays.asList(Keys.KEY_T_USER_T_USER_UN);
     }
 
     @Override
